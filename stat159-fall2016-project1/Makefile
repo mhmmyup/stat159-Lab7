@@ -1,4 +1,13 @@
-paper.html:paper.md 00-abstract.md 01-introduction.md 02-discussion.md 03-conclusions.md
-	pandoc -s sections/00-abstract.md sections/01-introduction.md sections/02-discussion.md 03-conclusions.md -o paper.md
-	pandoc paper.md -o paper.html
+.PHONY: clean
+
+all:paper.html
+
+paper.md:paper/sections/00-abstract.md paper/sections/01-introduction.md paper/sections/02-discussion.md paper/sections/03-conclusions.md images/git-logo.png images/github-logo.png images/markdown-logo.png images/pandoc-logo.png images/stat159-logo.png
+	cat paper/sections/00-abstract.md paper/sections/01-introduction.md paper/sections/02-discussion.md paper/sections/03-conclusions.md >> paper/paper.md
+
+paper.html:paper.md paper/sections/01-introduction.md paper/sections/02-discussion.md paper/sections/03-conclusions.md
+	pandoc paper/paper.md -s -o paper/paper.html
+
+clean:
+	rm -f paper.html
 	
