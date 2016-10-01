@@ -93,4 +93,21 @@ Again, we'll assume git is installed. Then, we'll initialize our directory as a 
      $ git commit -m "message"
      $ git push
 
-We don't just automatically share everything we do, however! Git is a conscious process through which we add files to a queue, decide that the change is good with a commit and a commit message, then push to our online Github repository. So, we select the files we desire to update or add, then decide if we're ok with it, then push it to Github. We can document and comment each step of the way! 
+We don't just automatically share everything we do, however! Git is a conscious process through which we add files to a queue, decide that the change is good with a commit and a commit message, then push to our online Github repository. So, we select the files we desire to update or add, then decide if we're ok with it, then push it to Github. We can document and comment each step of the way! We can then share this github repository with the world!
+
+One thing though - we have to set up the github repository, too. Git doesn't natively know where we're going to publish this stuff! This process is still confusing for me, so hopefully I'll be able to explain it.
+
+    $ git remote add origin (github link.git)
+    $ git remote -v
+    $ git push origin master
+
+You may need to fiddle with this a bit to get it working at the start, but this is the basic process to initiate the github remote repo and let us push to it. The `git remote -v` command lets us see what we're connected to and make sure everything is ok! Once we do this, `git push` after the commit will just push right to the repo we want until we decide to change it. 
+
+Thus, Git and Github together let us share our files and directory systems with the world, through small, deliberate iteration and care. 
+
+
+![Github Logo](../images/github-logo.png)
+
+
+This is deceptively powerful and ultimately one of the core parts of the reproducibility process. Without an easy to use online platform which we can interface with, and is so built up, projects and reproducible actions would be a good deal more arduous. While the github online webpage is definitely a work in progress, and can be difficult to use, the git library on bash is simple, understandable, and allows us to have a huge amount of controll over what we share, how we frame it, and when we'd like to do so.
+
