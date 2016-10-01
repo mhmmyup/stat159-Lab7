@@ -9,5 +9,5 @@ paper.html:paper.md paper/sections/01-introduction.md paper/sections/02-discussi
 	pandoc paper/paper.md -s -o paper/paper.html
 
 clean:
-	rm -f paper.html
+	rm -f paper/paper.html paper/paper.md
 	

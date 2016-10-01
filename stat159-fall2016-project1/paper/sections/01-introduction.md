@@ -1,4 +1,4 @@
-###Me
+###Me (An Introduction)
 
 If you were curious, I'm a statistics student at UC Berkeley who cares a lot about **making the research process more accountable.** I've thought endlessly about how tempting and easy it may be for researchers to exaggerate or fib a little bit in their findings to make them seem a bit grander or important, to make money, etc. This is a huge issue that I think is going largely unignored! 
 
