@@ -30,8 +30,9 @@ To quickly lay a framework for this tutorial, we'll be going over a few differen
 * pandoc
 * git
 * github
-* Make/Makefiles
-* and the Nano text editor. 
+* Make/Makefiles 
+
+I used very minimal text editing software, but to make this I used a light combination of nano, a very lightweight, simple, in-line bash text editor for the start of the Makefile, and Sublime Text (which is difficult to set up with Windows 10 bash) to do more complicated editing. But there was very little coding done in the process of making this tutorial so the text editors aren't particularly relevant. Sublime seems promising, though, and this was actually my first time ever using it!
 
 Even from the get-go, I am writing this file on an online markdown site so that I can see what my markdown will look like in real-time. The site I'm using is [http://markdownlivepreview.com/](http://markdownlivepreview.com/)  
 It's one of the better live markdown tools out there because it's more stripped down - it (for the most part) only shows the markdown syntax that is universally rendered and recognized across the web and other platforms. More about markdown later!
