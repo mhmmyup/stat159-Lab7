@@ -45,7 +45,8 @@ sprintf('Variance of TV: %.2f', tv.var)
 
 sprintf('Median of TV: %.2f', tv.med)
 
-sprintf('Range of TV: %.2f', tv.range)
+sprintf('Range of TV: Lower Bound %.2f
+        Upper Bound %.2f', tv.range[1], tv.range[2])
 
 sprintf('Interquartile Range of TV: %.2f', tv.iqr)
 
@@ -56,7 +57,8 @@ sprintf('Variance of Sales: %.2f', sales.var)
 
 sprintf('Median of Sales: %.2f', sales.med)
 
-sprintf('Range of Sales: %.2f', sales.range)
+sprintf('Range of Sales: Lower Bound %.2f
+        Upper Bound %.2f', sales.range[1], sales.range[2])
 
 sprintf('Interquartile Range of Sales: %.2f', sales.iqr)
 
