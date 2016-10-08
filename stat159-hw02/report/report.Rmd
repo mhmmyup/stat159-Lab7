@@ -33,7 +33,7 @@ To estimate the coefficients  $\beta_0$  and   $\beta_1$ we fit a regression mod
 
 ###Results
 
-We estimate the regression coefficients via the least squares method in this table:
+We estimate the regression coefficients via the least squares method in Table 1:
 
 
 
@@ -41,19 +41,19 @@ We estimate the regression coefficients via the least squares method in this tab
 #install.packages("xtable")
 library(xtable)
 require(xtable)
-load("../data/regression.RData")
+load("data/regression.RData")
 x.table <- xtable(sales.reg.summ$coefficients,
                   caption = "Information about Regression Coefficients")
 ```
 
-```{r results='asis', echo=FALSE}
+```{r results='asis', echo=FALSE, cache=FALSE}
 print(x.table, comment = FALSE, caption.placement = "top")
 ```
 
 
 
 
-Some statistics of the least squares model are presented in this table:
+Some statistics of the least squares model are presented in Table 2:
 
 ```{r, echo= FALSE}
 x.rsq <- sales.reg.summ$adj.r.squared
@@ -65,7 +65,7 @@ x.stats <- rbind(c("RSE", round(x.rse, 2)), c("RSS", round(x.rss,2)), c("R2", ro
 colnames(x.stats) <- c("Statistic", "Value")
 ```
 
-```{r results = 'asis', echo = FALSE}
+```{r results = 'asis', echo = FALSE, cache = FALSE}
 print(xtable(x.stats, caption = "Regression Statistics"), comment = FALSE, caption.placement = "top")
 
 ```
@@ -73,17 +73,27 @@ print(xtable(x.stats, caption = "Regression Statistics"), comment = FALSE, capti
 
 Lastly, here is the scatterplot of the mapped Television vs. Sales values, with fitted regression line:
 
-![Caption]("../images/scatterplot-tv-sales.png")
+![Finalized Regression Line](images/scatterplot-tv-sales.png)
 
-```{r, fig.height=15, fig.width=7, fig.align='center', echo=FALSE}
-#install.packages("png")
-library(png)
-require(png)
 
-x.png <- readPNG("../images/scatterplot-tv-sales.png")
-png(x.png)
+###Conclusions
 
-```
+Based on the extremely high t-value for **TV**, it can be surmised that, when other variables are not accounted for, **TV** advertisement has a significantly large chance of having an effect on **Sales**. Of course, a conclusion based solely on a t-statistic in a vacuum will be innacurate, as the other variables (**Newspaper**, **Radio**) likely influence the markets that **TV** advertising is taking place in to a substantial degree. In addition to the t-statistic, the F-statistic is extremely large as well, but it holds less meaning when there are not multple predictors being matched to a dependent variable. Although its relevancy is questionable, having a significant F-statistic surely helps.  
+
+
+Having a low RSE and realistically substantial R2 value, though, add a good deal of certainty to the reasonability of a statistically relevant fit. While neither statistics are showcasing an extremely close fit, they suggest good things about the goodness of fit, the correlation between **TV** and **Sales**, and substantially bolster the argument that **TV** is an important predictor in determining product sales in a market.  
+
+
+Some interesting observations are that, as TV advertising increases, Sales becomes more variable, in a very observable fashion. Perhaps these markets have subsequently less (or more) advertisement spending in the other mediums, influenced by the increase in TV spending, which leads to these more wild and unpredictable Sales figures. Additionally, there seem to be a pretty equal number of points above and below the line, but a general trend upwards. This is no detriment to a linear model, as the general upward trend is far more signifcant than spread out values.   
+
+
+Ultimately, increasing **TV** spending seems to have a statistically significant effect on an increase in Sales, but a realistic spending model will take into account how much these product sales really mean in response to a significant but not very positive relationship. The coefficient of **TV** in the regression line is pretty small, so although advertising does seem to have a net positive effect, there is definitely going to be a drop-off in how lucrative increasing expenditures will be past a certain point. Eventually advertising spending will overshadow actual sales revenue, so the acknowledgement of a significant but not very positive relationship can help color marketing decisions in the future. Additionally, it would be wise to start measuring the effects of the other predictors in tandem with **TV**, as these numbers are surely not telling the whole story.
+
+
+
+
+
+
 
 
 

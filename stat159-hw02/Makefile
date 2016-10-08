@@ -13,7 +13,8 @@ eda-output.txt: code/eda-script.R data/Advertising.csv
 regression.RData: code/regression-script.R data/Advertising.csv
 	Rscript code/regression-script.R
 
-
+report.pdf: report/report.Rmd data/regression.RData images/scatterplot-tv-sales.png
+	pandoc report/report.Rmd -s -o report/report.html
 
 clean: report/report.pdf
 	rm -f report/report.pdf
