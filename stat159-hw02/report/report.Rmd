@@ -1,0 +1,90 @@
+---
+title: "Simple Regression Analysis"
+author: "Bret Hart"
+date: "October 7, 2016"
+output: pdf_document
+---
+
+###Abstract
+
+The aim of this report is to reproduce the main graphical and statistical results displayed in chapter 3.1, *Simple Linear Regression*, of **An Introduction to Statistical Learning**. Referred to as **ISLR**, the textbook is a manifesto to Machine Learning and Linear Models, teaching the material in an approachable yet sophisticated way. In addition, the data used to generate all of the graphs, plots, etc. in the text are freely available - advancing and standing for the tenants of reproducible research, even in a textbook. We seek to create an automated repository which can recreate the findings that they display, using the same data set.
+
+
+###Introduction
+
+The data set which we are studying is an Advertising data set - it is a collection of money spent in 200 different markets on Advertising and each market's corresponding Sales figures. While the data also includes information on Newspaper and Radio advertisement, for the purpose of this project, we are going to focus on Television advertisement expenditure. We would like to determine whether there is a meaningful, significant relationship between TV advertisement and Sales, and, using these results, predict future Sales figures based on amounts of Advertisement expenditure. Ultimately, we would like to make sophisticated, informed decisions on how to form an Advertising plan in the future. We want to model this relationship effectively and correctly, and use the model to predict future sales and create a profitable Sales plan.
+
+
+###Data
+
+More specifically, the Advertising data sets contains **Sales** (in thousands of units) of a particular product in 200 different markets, supplemented by advertising budgets (in thousands of dollars) for the products in three different forms of media: **TV**, **Radio**, and **Newspaper**. For this, however, we are going to focus primarily on the relationship between **TV** and **Sales**, for the purposes of specifically reproducing the figures and findings in **ISLR**. 
+
+
+###Methodology
+
+As stated previously, we are focusing on the advertising medium of **TV** and its relationship with **Sales**. To do this, we will assume and use the simple linear model:
+
+\begin{center}
+\( \textbf{Sales} \) = \( \beta_0 \) + \(\beta_1\)\( \textbf{TV} \)
+\end{center}
+
+To estimate the coefficients  $\beta_0$  and   $\beta_1$ we fit a regression model via the least squares criterion.
+
+
+###Results
+
+We estimate the regression coefficients via the least squares method in this table:
+
+
+
+```{r include = FALSE, cache=FALSE}
+#install.packages("xtable")
+library(xtable)
+require(xtable)
+load("../data/regression.RData")
+x.table <- xtable(sales.reg.summ$coefficients,
+                  caption = "Information about Regression Coefficients")
+```
+
+```{r results='asis', echo=FALSE}
+print(x.table, comment = FALSE, caption.placement = "top")
+```
+
+
+
+
+Some statistics of the least squares model are presented in this table:
+
+```{r, echo= FALSE}
+x.rsq <- sales.reg.summ$adj.r.squared
+x.fstat <- unname(sales.reg.summ$fstatistic[1])
+x.rss <- sum(resid(sales.reg) ^ 2)
+x.rse <- sqrt(sum(resid(sales.reg) ^ 2) / sales.reg$df.residual)
+
+x.stats <- rbind(c("RSE", round(x.rse, 2)), c("RSS", round(x.rss,2)), c("R2", round(x.rsq,2)), c("F-stat", round(x.fstat,2)))
+colnames(x.stats) <- c("Statistic", "Value")
+```
+
+```{r results = 'asis', echo = FALSE}
+print(xtable(x.stats, caption = "Regression Statistics"), comment = FALSE, caption.placement = "top")
+
+```
+
+
+Lastly, here is the scatterplot of the mapped Television vs. Sales values, with fitted regression line:
+
+![Caption]("../images/scatterplot-tv-sales.png")
+
+```{r, fig.height=15, fig.width=7, fig.align='center', echo=FALSE}
+#install.packages("png")
+library(png)
+require(png)
+
+x.png <- readPNG("../images/scatterplot-tv-sales.png")
+png(x.png)
+
+```
+
+
+
+
