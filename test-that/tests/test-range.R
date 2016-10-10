@@ -10,7 +10,7 @@ test_that("range works as expected",{
 	expect_type(range_value(x), 'double')
 	
 	y <- c(1, 2, 3, 4, NA)
-	
+	 
 	expect_length(range_value(y),1)
 	expect_equal(range_value(y, FALSE), NA_real_)
 	expect_equal(range_value(y),3)
